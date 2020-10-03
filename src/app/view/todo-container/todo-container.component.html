@@ -1,0 +1,5 @@
+<hr-todo-item
+  *ngFor="let todo of todos"
+  [todo]=todo
+  (deleteTodo)="onDelete(todo)">
+</hr-todo-item>
