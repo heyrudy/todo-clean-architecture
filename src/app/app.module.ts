@@ -5,13 +5,15 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {AboutComponent} from './layouts/about/about.component';
 import {ViewModule} from './view/view.module';
-import {TodoMockRepository} from './data/repository/todo-mock-repository/todo-mock.repository';
 import {TodoRepository} from './core/repositories/todo.repository';
+import {HeaderComponent} from './layouts/header/header.component';
+import {TodoWebRepository} from './data/repository/todo-web-repository/todo-web.repository';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent
+    AboutComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +21,7 @@ import {TodoRepository} from './core/repositories/todo.repository';
     ViewModule
   ],
   providers: [
-    {provide: TodoRepository, useClass: TodoMockRepository}
+    {provide: TodoRepository, useClass: TodoWebRepository},
   ],
   bootstrap: [AppComponent]
 })
