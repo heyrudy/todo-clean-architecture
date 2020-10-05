@@ -11,8 +11,6 @@ import { TodoMockRepositoryMapper } from './todo-mock-repository-mapper';
 })
 export class TodoMockRepository extends TodoRepository {
 
-  private mapper = new TodoMockRepositoryMapper();
-
   todos = [
     {
       id: 1,
@@ -34,7 +32,7 @@ export class TodoMockRepository extends TodoRepository {
     },
   ];
 
-  constructor() {
+  constructor(private mapper: TodoMockRepositoryMapper) {
     super();
   }
 
@@ -48,12 +46,6 @@ export class TodoMockRepository extends TodoRepository {
     return of(this.todos.map(this.mapper.mapFrom));
   }
 
-  deleteTodo(todo: TodoModel): Observable<TodoModel> {
-    return from(this.todos)
-      .pipe(filter((todoMock: TodoMockEntity) => this.mapper.mapFrom(todoMock) !== todo))
-      .pipe(map(this.mapper.mapFrom));
-  }
-
   createTodo(todo: TodoModel): Observable<TodoModel> {
     let todoDto = this.mapper.mapTo(todo);
     todoDto = { id: this.todos.length + 1, ...todoDto };
@@ -63,7 +55,7 @@ export class TodoMockRepository extends TodoRepository {
 
   updateTodo(todo: TodoModel): Observable<TodoModel> {
     from(this.todos)
-      .pipe(filter((todoMock: TodoMockEntity) => this.mapper.mapFrom(todoMock) !== todo))
+      .pipe(filter((todoMock: TodoMockEntity) => todoMock.id === todo.id))
       .pipe(
         map((todoMock: TodoMockEntity) => {
           return {
@@ -75,5 +67,11 @@ export class TodoMockRepository extends TodoRepository {
         })
       );
     return of(todo);
+  }
+
+  deleteTodoById(id: number): Observable<TodoModel> {
+    return from(this.todos)
+      .pipe(filter((todoMock: TodoMockEntity) => todoMock.id === id))
+      .pipe(map(this.mapper.mapFrom));
   }
 }
