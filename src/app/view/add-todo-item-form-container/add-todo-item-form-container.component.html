@@ -1,0 +1,41 @@
+<form
+  [formGroup]="todoForm"
+  (ngSubmit)="onSubmit()">
+  <div class="add-todo-form-container">
+    <div class="todo-title-input-item">
+      <label>
+        <input
+          type="text"
+          name="title"
+          placeholder="Add todo title..."
+          formControlName="title"
+          [ngClass]="{ 'is-invalid': submitted && f.title.errors }"
+        >
+      </label>
+      <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+        <small *ngIf="submitted && f.title.errors && f.title.errors.required">Todo Title is required</small>
+      </div>
+    </div>
+    <div class="todo-task-input-item">
+      <label>
+        <input
+          type="text"
+          name="task"
+          placeholder="Add todo task..."
+          formControlName="task"
+          [ngClass]="{ 'is-invalid': submitted && f.task.errors }"
+        >
+      </label>
+      <div *ngIf="submitted && f.task.errors" class="invalid-feedback">
+        <small *ngIf="f.task.errors.required">Todo Task is required</small>
+      </div>
+    </div>
+    <div class="todo-submit-input-item">
+      <input
+        type="submit"
+        value="Add Todo"
+        class="btn btn-primary">
+    </div>
+  </div>
+</form>
+

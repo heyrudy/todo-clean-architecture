@@ -1,0 +1,20 @@
+.add-todo-form-container {
+  display: flex;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  .todo-title-input-item,
+  .todo-task-input-item {
+    padding: 0 20px;
+
+    input[type='text'] {
+      flex: 10;
+      padding: 5px;
+    }
+  }
+
+  .todo-submit-input-item {
+    padding: 0 50px;
+  }
+}
