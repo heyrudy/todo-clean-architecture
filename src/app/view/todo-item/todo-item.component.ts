@@ -10,7 +10,7 @@ import {UpdateTodoByIdUsecase} from '../../core/usecases/update-todo-by-id.useca
 export class TodoItemComponent implements OnInit {
 
   @Input() todo: TodoModel;
-  @Output() deleteTodo: EventEmitter<number> = new EventEmitter();
+  @Output() deleteTodoItem: EventEmitter<TodoModel> = new EventEmitter();
 
   constructor(private updateTodoByIdUsecase: UpdateTodoByIdUsecase) {
   }
@@ -34,7 +34,7 @@ export class TodoItemComponent implements OnInit {
     console.log(todo);
   }
 
-  onDelete(e): void {
-    this.deleteTodo.emit(e);
+  onDelete(todo: TodoModel): void {
+    this.deleteTodoItem.emit(todo);
   }
 }
