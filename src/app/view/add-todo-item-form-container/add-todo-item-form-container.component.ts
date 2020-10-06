@@ -13,13 +13,13 @@ export class AddTodoItemFormContainerComponent implements OnInit {
   @Output() addTodoItem: EventEmitter<any> = new EventEmitter();
 
   constructor(private formBuilder: FormBuilder) {
+  }
+
+  ngOnInit(): void {
     this.todoForm = this.formBuilder.group({
       title: ['', [Validators.required]],
       task: ['', [Validators.required]]
     });
-  }
-
-  ngOnInit(): void {
   }
 
 // convenience getter for easy access to form fields
