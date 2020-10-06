@@ -11,5 +11,5 @@ export abstract class TodoRepository {
 
   abstract updateTodo(todo: TodoModel): Observable<TodoModel>;
 
-  abstract deleteTodo(todo: TodoModel): Observable<TodoModel>;
+  abstract deleteTodoById(id: number): Observable<TodoModel>;
 }
