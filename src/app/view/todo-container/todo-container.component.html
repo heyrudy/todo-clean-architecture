@@ -1,5 +1,8 @@
+<hr-add-todo-item-form-container
+  (addTodoItem)="addTodo($event)">
+</hr-add-todo-item-form-container>
 <hr-todo-item
   *ngFor="let todo of todos"
   [todo]=todo
-  (deleteTodo)="onDelete(todo)">
+  (deleteTodoItem)="deleteTodo(todo)">
 </hr-todo-item>
