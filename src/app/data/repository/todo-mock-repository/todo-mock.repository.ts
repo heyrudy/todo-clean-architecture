@@ -69,7 +69,7 @@ export class TodoMockRepository extends TodoRepository {
     return of(todo);
   }
 
-  deleteTodoById(id: number): Observable<TodoModel> {
+  deleteTodoById(id: number): Observable<{}> {
     return from(this.todos)
       .pipe(filter((todoMock: TodoMockEntity) => todoMock.id === id))
       .pipe(map(this.mapper.mapFrom));

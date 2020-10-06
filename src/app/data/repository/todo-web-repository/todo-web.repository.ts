@@ -51,9 +51,9 @@ export class TodoWebRepository extends TodoRepository {
       .put<TodoWebEntity>(url, todo, httpOptions);
   }
 
-  deleteTodoById(id: number): Observable<TodoModel> {
+  deleteTodoById(id: number): Observable<{}> {
     const url = `${this.todosUrl}/${id}`;
     return this.http
-      .delete<TodoWebEntity>(url, httpOptions);
+      .delete(url, httpOptions);
   }
 }

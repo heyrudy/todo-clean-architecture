@@ -31,7 +31,7 @@ export class TodoContainerComponent implements OnInit {
         todo !== todoToBeDeleted);
 
     // Delete on Server
-    this.deleteTodoByIdUsecase.execute(todoToBeDeleted.id);
+    this.deleteTodoByIdUsecase.execute(todoToBeDeleted.id).subscribe();
   }
 
   addTodo(newTodo: TodoModel): void{
